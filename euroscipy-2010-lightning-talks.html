@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sevas" />
+        <meta name="copyright" content="sevas" />
+
+        <meta name="twitter:creator" content="@sevas">
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="euroscipy, python, Python, " />
+
+<meta property="og:title" content="EuroScipy 2010 Lightning Talks "/>
+<meta property="og:url" content="./euroscipy-2010-lightning-talks.html" />
+<meta property="og:description" content="Notes taken during the lightning talks session EuroScipy 2010 conference in Paris" />
+<meta property="og:site_name" content="braindump_" />
+<meta property="og:article:author" content="sevas" />
+<meta property="og:article:published_time" content="2010-11-27T10:20:00+01:00" />
+<meta property="" content="2017-06-20T19:30:00+02:00" />
+<meta name="twitter:title" content="EuroScipy 2010 Lightning Talks ">
+<meta name="twitter:description" content="Notes taken during the lightning talks session EuroScipy 2010 conference in Paris">
+
+        <title>EuroScipy 2010 Lightning Talks  · braindump_
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./theme/css/custom.css" media="screen">
+        <link href="https://sevas.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="braindump_ - Full Atom Feed" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-71912874-1', 'auto');
+    ga('send', 'pageview');
+</script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="./"><span class=site-name>braindump_</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href=".">Home</a></li>
+                            <li ><a href="./categories.html">Categories</a></li>
+                            <li ><a href="./tags.html">Tags</a></li>
+                            <li ><a href="./archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="./euroscipy-2010-lightning-talks.html"> EuroScipy 2010 Lightning Talks  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            <p><em>Notes taken during the lightning talks session EuroScipy 2010 conference in Paris. Most talks were about presenting a new scientific python module or software package. This was also an opportunity for the authors to make a call for contributions.</em></p>
+<h3 id="glumpy"><a href="http://code.google.com/p/glumpy/">glumpy</a></h3>
+<p>A lightweight visualization library based on PyOpenGL and numpy. Does not attempt to replace <a href="http://code.enthought.com/projects/mayavi/">Mayavi</a> and serves a different purpose. A nice way to have fast animations for figures rendered with <a href="http://matplotlib.sourceforge.net/">matplotlib</a>.</p>
+<h3 id="joblib"><a href="http://github.com/GaelVaroquaux/joblib">joblib</a></h3>
+<p>A lightweight pipelining library. Syntatic sugar over the <a href="http://docs.python.org/library/multiprocessing.html">multiprocessing</a> module</p>
+<h3 id="npk-2.0"><a href="http://abcis.cbs.cnrs.fr/NPK/index.html">NPK 2.0</a></h3>
+<p>A nuclear magnetic resonance processing kernel. The current version uses a Java GUI with some <a href="http://www.jython.org/">Jython</a> . It does not currently use numpy/scipy, but there is an ongoing rewrite in that direction.</p>
+<h3 id="fermhub">fermhub</h3>
+<p>Multiple notebooks for <a href="http://www.sagemath.org/">SAGE</a>.</p>
+<h3 id="peewit"><a href="http://www.ke.tu-darmstadt.de/resources/peewit">peewit</a></h3>
+<p>An agnostic machine learning framework. Rather than focusing on the actual computations, peewit aims to do the housekeeping of running the experiments.</p>
+<h3 id="scikits.learn"><a href="http://scikit-learn.sourceforge.net/">scikits.learn</a></h3>
+<p>A machine learning library, implements general-purpose ML algorithms. It has efficient bindings to <a href="http://www.csie.ntu.edu.tw/~cjlin/liblinear/">libSVM</a> and <a href="http://www.csie.ntu.edu.tw/~cjlin/liblinear/">LibLinear</a>. Many examples on the site.</p>
+<p><em>From the audience : </em> &gt; How does it compare to &gt; <a href="http://www.ailab.si/orange/">Orange</a>?</p>
+<p>Orange is a GUI over many algorithms. It also has many dependencies. scikits.learn aims to be an easy to install, easy to use API.</p>
+<blockquote>
+<p>There are many machine learning libraries currently being developed. There should be an effort to unify everything.</p>
+</blockquote>
+<p>Author does not disagree.</p>
+<h3 id="rstsphinx-based-thesis-authoring-tool-chain">RST/Sphinx based thesis authoring tool-chain</h3>
+<p>This is more a wish than an actual implementation. <a href="http://en.wikipedia.org/wiki/LaTeX">LaTeX</a> has many great features and beautiful typography, for text and equations, but is too complicated. Any self-respecting scientist won't use Word to publish her work.</p>
+<p><a href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a> fit nicely in the middle of this spectrum. However, as a tool originally developed for making documentation and manuals, it currently lacks some basic functionality to author scientific work. The most critical one being proper support for citations.</p>
+<p>An RST-based presentation tool would also be nice. An audience member pointed to the <a href="http://www.agapow.net/software/rst2beamer">rst2beamer</a> package.</p>
+<p><em>Personal note : It's not RST, but the <a href="http://daringfireball.net/projects/markdown/">markdown</a>-based <a href="https://github.com/schacon/showoff">showoff</a> presentation system is pretty enjoyable.</em></p>
+<h3 id="uncertainties"><a href="http://packages.python.org/uncertainties/">uncertainties</a></h3>
+<p>A python module to handle calculations on numbers with uncertainties. Uses error propagation theory.</p>
+<h3 id="upy"><a href="https://github.com/friedrichromstedt/upy">upy</a></h3>
+<p>Another python module to handle error propagation and uncertainty in computations. Uses Gaussian error propagation.</p>
+<h3 id="snpedia"><a href="http://www.snpedia.com/index.php/SNPedia">SNPedia</a></h3>
+<p>An effort to centralize informations about <a href="http://www.snpedia.com/index.php/SNP">SNPs</a> (<em>&quot;snips&quot;</em>).</p>
+<p>For every SNP, SNPedia links to related research papers. The database is used by the <a href="http://www.snpedia.com/index.php/Promethease">Promethease</a> reporting tool, which can import data data from genetic testing services like <a href="https://www.23andme.com/">23andme</a>.</p>
+<p>The slides are still available as a <a href="http://tinyurl.com/mydna123">Google Docs presentation</a>.</p>
+<h3 id="interfacing-with-instruments-for-experimental-physics">Interfacing with instruments for experimental physics</h3>
+<p>This is call for feedback on how python could help replacing <a href="http://www.ni.com/labview/">Labview</a>, to interface with measurements and control hardware used in experimental physics. Vendors rarely ships a python API. And a GUI tool like Labview does not shine to run batch experiments, where a script would be great.</p>
+<p><em>Questions : </em></p>
+<blockquote>
+<p>Why and when did you leave matlab and labview?</p>
+</blockquote>
+<p>The speaker did not leave matlab. Only the <em>&quot;nightmare&quot;</em> (sic) that is Labview.</p>
+<blockquote>
+<p>If you get a binary vendor DLL, why not use ctypes ?</p>
+</blockquote>
+<p>ctypes works well with DLLs written in C, not so much when they are written in C++. In that case, you need to write a C wrapper first.</p>
+<h3 id="matplotlib-and-html5canvas">matplotlib and HTML5/Canvas</h3>
+<p>As of version 1.0, the popular python plotting library <a href="http://matplotlib.sourceforge.net/">matplotlib</a> got a<br />
+<a href="http://en.wikipedia.org/wiki/Canvas_element">HTML5 Canvas</a> backend. Really useful for SAGE. A nice step to make <a href="http://www.apple.com/ipad/">anything with a modern browser</a> a decent platform for scientific work. The 3D plot demo wasn't really convincing though.</p>
+
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2010-11-27T10:20:00+01:00">Nov 27, 2010</time>
+
+<h4>Last Updated</h4>
+<time datetime="2017-06-20T19:30:00+02:00">Jun 20, 2017</time>
+
+            <h4>Category</h4>
+            <a class="category-link" href="./categories.html#python-ref">Python</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="./tags.html#euroscipy-ref">euroscipy
+                    <span>1</span>
+</a></li>
+                <li><a href="./tags.html#python-ref">python
+                    <span>7</span>
+</a></li>
+            </ul>
+<h4>Contact</h4>
+    <a href="http://twitter.com/sevas" title="My Twitter Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-twitter sidebar-social-links"></i></a>
+    <a href="http://github.com/sevas" title="My Github Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-github sidebar-social-links"></i></a>
+    <a href="mailto:f.degroef@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-envelope sidebar-social-links"></i></a>
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>

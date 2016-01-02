@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sevas" />
+        <meta name="copyright" content="sevas" />
+
+        <meta name="twitter:creator" content="@sevas">
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="python, pdb, psyco, Python, " />
+
+<meta property="og:title" content="Making pdb work with psyco "/>
+<meta property="og:url" content="./pdb-psyco.html" />
+<meta property="og:description" content="Psyco ate my stack frames" />
+<meta property="og:site_name" content="braindump_" />
+<meta property="og:article:author" content="sevas" />
+<meta property="og:article:published_time" content="2010-09-11T10:20:00+02:00" />
+<meta property="" content="2015-06-20T22:05:00+02:00" />
+<meta name="twitter:title" content="Making pdb work with psyco ">
+<meta name="twitter:description" content="Psyco ate my stack frames">
+
+        <title>Making pdb work with psyco  · braindump_
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./theme/css/custom.css" media="screen">
+        <link href="https://sevas.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="braindump_ - Full Atom Feed" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-71912874-1', 'auto');
+    ga('send', 'pageview');
+</script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="./"><span class=site-name>braindump_</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href=".">Home</a></li>
+                            <li ><a href="./categories.html">Categories</a></li>
+                            <li ><a href="./tags.html">Tags</a></li>
+                            <li ><a href="./archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="./pdb-psyco.html"> Making pdb work with psyco  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            <div class="note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is a rewrite of an old blog post from way back, it
+still might be useful so I'm throwing it on here.</p>
+</div>
+<p><a class="reference external" href="http://docs.python.org/library/pdb.html">Pdb</a>, the standard python debugger,
+does not play nice with <a class="reference external" href="http://psyco.sourceforge.net/">psyco</a>. Or maybe it's
+the opposite. To illustrate this, let's start with a simple python program, that
+will surely provoke a breakpoint:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">psyco</span>
+<span class="n">psyco</span><span class="o">.</span><span class="n">full</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;triggers a breakpoint&quot;&quot;&quot;</span>
+    <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="p">[</span><span class="n">arg</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span>
+    <span class="mi">1</span><span class="o">/</span><span class="mi">0</span> 
+    <span class="k">return</span> <span class="n">arg</span><span class="o">*</span><span class="mi">2</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">foo</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+<p>A debugging session with pdb should look like that:</p>
+<div class="highlight"><pre>$ pdb hello_pdb.py
+&gt; /home/sevas/code/python/hello_pdb.py(1)()
+-&gt; import psyco
+(Pdb) c
+Traceback (most recent call last):
+File &quot;/usr/bin/pdb&quot;, line 1213, in main
+pdb._runscript(mainpyfile)
+File &quot;/usr/bin/pdb&quot;, line 1138, in _runscript
+self.run(statement, globals=globals_, locals=locals_)
+File &quot;/usr/lib/python2.5/bdb.py&quot;, line 366, in run
+exec cmd in globals, locals
+File &quot;&quot;, line 1, in 
+File &quot;hello_pdb.py&quot;, line 11, in 
+print foo(i)
+File &quot;hello_pdb.py&quot;, line 7, in foo
+1/0
+ZeroDivisionError: integer division or modulo by zero
+Uncaught exception. Entering post mortem debugging
+Running &#39;cont&#39; or &#39;step&#39; will restart the program
+&gt; /home/sevas/code/python/hello_pdb.py(7)foo()
+-&gt; 1/0
+(Pdb) arg
+*** NameError: name &#39;arg&#39; is not defined
+(Pdb) locals()
+{}
+(Pdb) q
+Post mortem debugger finished. The hello.py will be restarted
+&gt; /home/sevas/code/python/hello_pdb.py(1)()
+</pre></div>
+<p>So, what happenned here?</p>
+<ul class="simple">
+<li>We start a pdb debugging session on the hello_pdb.py file</li>
+<li>the pdb command <cite>c</cite> (continue) starts the program</li>
+<li>The program throws a <cite>ZeroDivisionError</cite>, pdb enters post-mortem
+debugging</li>
+<li>We try to inspect the environment : the variable <cite>arg</cite> does not exist,
+the <cite>locals()</cite> dictionnary is empty.</li>
+</ul>
+<p>The reason for that is, when psyco is active, all your psyco-compiled functions,
+along with their stack frames, are stored away in a secret place which poor pdb
+is not aware of.</p>
+<p>At least 2 solutions exist. First, you could comment out the <tt class="docutils literal">psyco.full()</tt>
+statement for every debug session. However, this isn't always an option, as some
+libraries always makes the use of psyco <a class="footnote-reference" href="#f1" id="id1">[1]</a> if it is available. Uncommenting
+and recommenting in every third party library is not a reasonable option.</p>
+<p>So, how do I seamlessly disable psyco while debugging a module with
+Pdb ? After some research, it seemed like the
+<a class="reference external" href="http://pydev.sourceforge.net">pydev</a> eclipse extension had just the
+workaround I needed. First, we need a fake psyco module, implementing
+the psyco interface. Something like this :</p>
+<div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Psyco stub: should implement all the external API from psyco.</span>
+<span class="sd">Taken from the pydev eclipse extension.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">proxy</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">func</span>
+
+<span class="k">def</span> <span class="nf">bind</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">func</span>
+
+<span class="k">def</span> <span class="nf">unbind</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">func</span>
+
+<span class="k">def</span> <span class="nf">unproxy</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">func</span>
+
+<span class="k">def</span> <span class="nf">full</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">runonly</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+<p>This is just a copy of the <em>pydevd_psyco_stub.py</em> file shipped with
+pydev, I'm not taking credit for anything here.</p>
+<p>Next, we need to tell pdb to replace the psyco entry in <tt class="docutils literal">sys.modules</tt>
+with that fake module. This is done through the <em>.pdbrc</em> configuration
+file. Conveniently, the <em>.pdbrc</em> file accepts plain python code, so it's
+like super easy and stuff.  Here's my <em>.pdbrc</em> :</p>
+<div class="highlight"><pre>#.pdbrc
+import sys
+import os
+
+sys.path += [os.getenv(&quot;HOME&quot;)]
+import pdb_psyco_stub
+sys.modules[&#39;psyco&#39;] = pdb_psyco_stub
+print &#39;*** Info : Psyco module replaced with pdb_psyco_stub&#39;
+
+from pprint import pprint
+</pre></div>
+<p>And that's it.</p>
+<p>A few remarks:</p>
+<ul class="simple">
+<li>Both <em>.pdbrc</em> and <em>pydevd_psyco_stub.py</em> need to be in your home directory</li>
+<li>On Windows, this means <a class="footnote-reference" href="#f2" id="id2">[2]</a> putting them in an arbitrary folder, and
+then create a <tt class="docutils literal">%HOME%</tt> environment variable pointing to that
+directory <a class="footnote-reference" href="#f3" id="id3">[3]</a></li>
+<li>I strongly recommend the use of the <tt class="docutils literal">pprint</tt> function (especially for
+inspecting your data while debugging)</li>
+</ul>
+<p>So what does it mean for our test module from earlier ? Let me show it
+to you:</p>
+<div class="highlight"><pre>$ pdb hello_pdb.py
+*** Info : Psyco module replaced with pdb_psyco_stub
+&gt; /home/sevas/code/python/hello_pdb.py(1)()
+-&gt; import psyco
+(Pdb) c
+Traceback (most recent call last):
+...snip...
+File &quot;hello_pdb.py&quot;, line 7, in foo
+1/0
+ZeroDivisionError: integer division or modulo by zero
+Uncaught exception. Entering post mortem debugging
+Running &#39;cont&#39; or &#39;step&#39; will restart the program
+&gt; /home/sevas/code/python/hello_pdb.py(7)foo()
+-&gt; 1/0
+(Pdb) arg
+0
+(Pdb) locals()
+{&#39;i&#39;: 0, &#39;k&#39;: 0, &#39;j&#39;: 0, &#39;arg&#39;: 0}
+(Pdb)
+</pre></div>
+<p>Great success.</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>This is actually my primary motivation</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Among other options, but I find this one easy enough</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>And windows users should use <a class="reference external" href="http://www.rapidee.com/en/about">Rapid Environment Editor</a> for this.</td></tr>
+</tbody>
+</table>
+
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2010-09-11T10:20:00+02:00">Sep 11, 2010</time>
+
+<h4>Last Updated</h4>
+<time datetime="2015-06-20T22:05:00+02:00">Jun 20, 2015</time>
+
+            <h4>Category</h4>
+            <a class="category-link" href="./categories.html#python-ref">Python</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="./tags.html#pdb-ref">pdb
+                    <span>1</span>
+</a></li>
+                <li><a href="./tags.html#psyco-ref">psyco
+                    <span>1</span>
+</a></li>
+                <li><a href="./tags.html#python-ref">python
+                    <span>7</span>
+</a></li>
+            </ul>
+<h4>Contact</h4>
+    <a href="http://twitter.com/sevas" title="My Twitter Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-twitter sidebar-social-links"></i></a>
+    <a href="http://github.com/sevas" title="My Github Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-github sidebar-social-links"></i></a>
+    <a href="mailto:f.degroef@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-envelope sidebar-social-links"></i></a>
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>

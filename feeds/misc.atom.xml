@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>braindump_</title><link href="https://sevas.github.io/" rel="alternate"></link><link href="https://sevas.github.io/feeds/misc.atom.xml" rel="self"></link><id>https://sevas.github.io/</id><updated>2015-06-20T22:24:00+02:00</updated><entry><title>Solarized Light color scheme for PyCharm</title><link href="https://sevas.github.io/pycharm-colors.html" rel="alternate"></link><updated>2015-06-20T22:22:00+02:00</updated><author><name>sevas</name></author><id>tag:sevas.github.io,2011-04-26:pycharm-colors.html</id><summary type="html">&lt;h1 id="a-matter-of-taste"&gt;A matter of taste&lt;/h1&gt;
+&lt;p&gt;&lt;a href="http://www.jetbrains.com/pycharm/"&gt;PyCharm&lt;/a&gt; is a neat development environment, especially if you're working with &lt;a href="http://code.google.com/appengine/"&gt;Google App Engine&lt;/a&gt; or &lt;a href="http://www.djangoproject.com/"&gt;Django&lt;/a&gt;. But the default color scheme is pretty horrendous, and their effort to bundle additional schemes has been less than fruitful, in my opinion (seriously, &lt;a href="http://dl.dropbox.com/u/260262/blog/2011-04-26-pycharm-colors/warmneon.png"&gt;WarmNeon&lt;/a&gt;?)&lt;/p&gt;
+&lt;p&gt;In addition, I find that using dark color schemes in a environment where a significant area will stay white and bright is pretty idiotic. And I know this because I did it for a year.&lt;/p&gt;
+&lt;h1 id="enters-solarized-light"&gt;Enters Solarized (Light)&lt;/h1&gt;
+&lt;p&gt;Recently, the &lt;a href="http://ethanschoonover.com/solarized"&gt;Solarized&lt;/a&gt; color schemes were picked on by &lt;a href="http://news.ycombinator.com/item?id=2393976"&gt;Hacker News&lt;/a&gt;, and several people ported it to their favourite editor. However, I could not find anything good enough for PyCharm (or any other &lt;a href="http://www.jetbrains.com/"&gt;IntelliJ&lt;/a&gt;-based IDE). It was often wrong, incomplete, or both.&lt;/p&gt;
+&lt;p&gt;This is my attempt to make a coherent theme from these colors, for all the file types supported by PyCharm: python, of course, but also HTML, css, YAML, django templates, and so on.&lt;/p&gt;
+&lt;p&gt;It's just one XML file to download. Grab it on &lt;a href="https://github.com/sevas/pycharm-color-schemes"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id="installation"&gt;Installation&lt;/h1&gt;
+&lt;p&gt;The downloaded file should be copied to the following directory:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MacOS X: &lt;code&gt;~/Library/Preferences/PyCharm10/colors&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;GNU/Linux: &lt;code&gt;~/.PyCharm10/config/color&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Windows Vista and 7: &lt;code&gt;C:\Users\$USER\.PyCharm10\config\colors&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Windows XP: &lt;code&gt;C:\Documents and Settings\$USER\.PyCharm10\config\colors&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Restart PyCharm, change the editor colors in the settings, and you're gold.&lt;/p&gt;
+&lt;h1 id="final-note"&gt;Final note&lt;/h1&gt;
+&lt;p&gt;I try not to be a typography nerd or anything, but I do like when things look nice.&lt;/p&gt;
+&lt;p&gt;Because I mainly use PyCharm on MacOS X, the font used is Menlo. This font ships with OS X, but is not likely to be on your Windows or Linux computer.&lt;/p&gt;
+&lt;p&gt;On modern Windows systems, tasteful people use &lt;a href="http://en.wikipedia.org/wiki/Consolas"&gt;Consolas&lt;/a&gt; (I know I do.) On a GNU/Linux box, you're probably good with the default monospace font shipping with your desktop environment.&lt;/p&gt;
+&lt;p&gt;But stay away from Courier New.&lt;/p&gt;
+</summary><category term="python"></category><category term="PyCharm"></category></entry><entry><title>First post</title><link href="https://sevas.github.io/first-post.html" rel="alternate"></link><updated>2015-06-20T22:24:00+02:00</updated><author><name>sevas</name></author><id>tag:sevas.github.io,2010-09-11:first-post.html</id><summary type="html">&lt;p&gt;Goodbye shitty visual html editors, hello markdown&lt;/p&gt;
+</summary></entry></feed>

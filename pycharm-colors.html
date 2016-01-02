@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="sevas" />
+        <meta name="copyright" content="sevas" />
+
+        <meta name="twitter:creator" content="@sevas">
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
+
+<meta name="keywords" content="python, PyCharm, misc, " />
+
+<meta property="og:title" content="Solarized Light color scheme for PyCharm "/>
+<meta property="og:url" content="./pycharm-colors.html" />
+<meta property="og:description" content="Contrast is good" />
+<meta property="og:site_name" content="braindump_" />
+<meta property="og:article:author" content="sevas" />
+<meta property="og:article:published_time" content="2011-04-26T10:20:00+02:00" />
+<meta property="" content="2015-06-20T22:22:00+02:00" />
+<meta name="twitter:title" content="Solarized Light color scheme for PyCharm ">
+<meta name="twitter:description" content="Contrast is good">
+
+        <title>Solarized Light color scheme for PyCharm  · braindump_
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="./theme/css/custom.css" media="screen">
+        <link href="https://sevas.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="braindump_ - Full Atom Feed" />
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-71912874-1', 'auto');
+    ga('send', 'pageview');
+</script>
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="./"><span class=site-name>braindump_</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href=".">Home</a></li>
+                            <li ><a href="./categories.html">Categories</a></li>
+                            <li ><a href="./tags.html">Tags</a></li>
+                            <li ><a href="./archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="./search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="./pycharm-colors.html"> Solarized Light color scheme for PyCharm  </a></h1>
+    </header>
+</div>
+
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
+
+            
+            <h1 id="a-matter-of-taste">A matter of taste</h1>
+<p><a href="http://www.jetbrains.com/pycharm/">PyCharm</a> is a neat development environment, especially if you're working with <a href="http://code.google.com/appengine/">Google App Engine</a> or <a href="http://www.djangoproject.com/">Django</a>. But the default color scheme is pretty horrendous, and their effort to bundle additional schemes has been less than fruitful, in my opinion (seriously, <a href="http://dl.dropbox.com/u/260262/blog/2011-04-26-pycharm-colors/warmneon.png">WarmNeon</a>?)</p>
+<p>In addition, I find that using dark color schemes in a environment where a significant area will stay white and bright is pretty idiotic. And I know this because I did it for a year.</p>
+<h1 id="enters-solarized-light">Enters Solarized (Light)</h1>
+<p>Recently, the <a href="http://ethanschoonover.com/solarized">Solarized</a> color schemes were picked on by <a href="http://news.ycombinator.com/item?id=2393976">Hacker News</a>, and several people ported it to their favourite editor. However, I could not find anything good enough for PyCharm (or any other <a href="http://www.jetbrains.com/">IntelliJ</a>-based IDE). It was often wrong, incomplete, or both.</p>
+<p>This is my attempt to make a coherent theme from these colors, for all the file types supported by PyCharm: python, of course, but also HTML, css, YAML, django templates, and so on.</p>
+<p>It's just one XML file to download. Grab it on <a href="https://github.com/sevas/pycharm-color-schemes">github</a>.</p>
+<h1 id="installation">Installation</h1>
+<p>The downloaded file should be copied to the following directory:</p>
+<ul>
+<li>MacOS X: <code>~/Library/Preferences/PyCharm10/colors</code></li>
+<li>GNU/Linux: <code>~/.PyCharm10/config/color</code></li>
+<li>Windows Vista and 7: <code>C:\Users\$USER\.PyCharm10\config\colors</code></li>
+<li>Windows XP: <code>C:\Documents and Settings\$USER\.PyCharm10\config\colors</code></li>
+</ul>
+<p>Restart PyCharm, change the editor colors in the settings, and you're gold.</p>
+<h1 id="final-note">Final note</h1>
+<p>I try not to be a typography nerd or anything, but I do like when things look nice.</p>
+<p>Because I mainly use PyCharm on MacOS X, the font used is Menlo. This font ships with OS X, but is not likely to be on your Windows or Linux computer.</p>
+<p>On modern Windows systems, tasteful people use <a href="http://en.wikipedia.org/wiki/Consolas">Consolas</a> (I know I do.) On a GNU/Linux box, you're probably good with the default monospace font shipping with your desktop environment.</p>
+<p>But stay away from Courier New.</p>
+
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2011-04-26T10:20:00+02:00">Apr 26, 2011</time>
+
+<h4>Last Updated</h4>
+<time datetime="2015-06-20T22:22:00+02:00">Jun 20, 2015</time>
+
+            <h4>Category</h4>
+            <a class="category-link" href="./categories.html#misc-ref">misc</a>
+            <h4>Tags</h4>
+            <ul class="list-of-tags tags-in-article">
+                <li><a href="./tags.html#pycharm-ref">PyCharm
+                    <span>1</span>
+</a></li>
+                <li><a href="./tags.html#python-ref">python
+                    <span>7</span>
+</a></li>
+            </ul>
+<h4>Contact</h4>
+    <a href="http://twitter.com/sevas" title="My Twitter Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-twitter sidebar-social-links"></i></a>
+    <a href="http://github.com/sevas" title="My Github Profile" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-github sidebar-social-links"></i></a>
+    <a href="mailto:f.degroef@gmail.com" title="My Email Address" class="sidebar-social-links" target="_blank">
+    <i class="fa fa-envelope sidebar-social-links"></i></a>
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
+</html>
